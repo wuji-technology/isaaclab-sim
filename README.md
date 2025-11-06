@@ -2,6 +2,11 @@
 
 A minimal demo for loading and controlling the WujiHand model in the IsaacLab simulator.
 
+
+https://github.com/user-attachments/assets/3fffb009-f78a-4dda-93ed-94de20b93811
+
+<video src="./assets/video.mp4" controls=""></video>
+
 ## Requirements
 
 * Follow the official documentation to set up your environment: 
