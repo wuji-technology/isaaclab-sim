@@ -1,14 +1,16 @@
-# WujiHand IsaacLab Simulation
+# WujiHand IsaacSim Simulation
 
-A minimal demo for loading and controlling the WujiHand model in the IsaacLab simulator.
+Minimal demo for WujiHand in IsaacSim simulator.
 
 
 https://github.com/user-attachments/assets/3fffb009-f78a-4dda-93ed-94de20b93811
 
 <video src="./assets/video.mp4" controls=""></video>
 
-## Requirements
-
+## Setup
+```bash
+git clone --recurse-submodules https://github.com/Wuji-Technology-Co-Ltd/isaaclab-sim.git
+```
 * Follow the official documentation to set up your environment: 
   https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html
 
@@ -19,4 +21,4 @@ Run the simulation with trajectory playback:
 python run_sim.py
 ```
 
-The script loads the default left hand model and plays the trajectory from `data/wave.npy` in a loop. To use the left hand, edit `side = "left"` in `run_sim.py`.
+The script loads the default right hand model and plays the trajectory from `data/wave.npy` in a loop. To use the left hand, edit `HAND_SIDE = "left"` in `run_sim.py`.

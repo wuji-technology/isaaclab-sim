@@ -1,13 +1,19 @@
+import os
 import isaaclab.sim as sim_utils
 from isaaclab.actuators.actuator_cfg import ImplicitActuatorCfg
 from isaaclab.assets.articulation import ArticulationCfg
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+os.environ["ROS_PACKAGE_PATH"] = f"{current_dir}:" + os.environ.get(
+    "ROS_PACKAGE_PATH", ""
+)
 
 
 def get_wujihand_config(model_base_dir, hand_side):
     # File paths
     urdf_path = f"{model_base_dir}{hand_side}.urdf"
-    usd_dir = f"{model_base_dir}usd"
-    
+    usd_dir = f"{current_dir}/usd"
+
     # PD control gains
     kp = {
         "finger(1|2|3|4|5)_joint(1|2)": 2,
@@ -18,11 +24,11 @@ def get_wujihand_config(model_base_dir, hand_side):
         "finger.*_joint(1|2)": 0.05,
         "finger.*_joint(3|4)": 0.03,
     }
-    
+
     # Torque limits for each joint (Nm)
     effort_limits = {
-        "finger(1|2|3|4|5)_joint(1|2)": 3, 
-        "finger(1|2|3|4|5)_joint3": 1.5, 
+        "finger(1|2|3|4|5)_joint(1|2)": 3,
+        "finger(1|2|3|4|5)_joint3": 1.5,
         "finger(1|2|3|4|5)_joint4": 1,
     }
 
@@ -32,21 +38,18 @@ def get_wujihand_config(model_base_dir, hand_side):
             usd_dir=usd_dir,
             usd_file_name="wujihand",
             force_usd_conversion=True,
-            
             # Physics properties
             fix_base=True,
             root_link_name="palm_link",
             link_density=1,
-            
             # Collision settings
-            collider_type="convex_hull", 
+            collider_type="convex_hull",
             self_collision=True,
             activate_contact_sensors=True,
-            
             # Joint control - PD gains for implicit solver
             joint_drive=sim_utils.UrdfConverterCfg.JointDriveCfg(
                 drive_type="force",
-                target_type="position", 
+                target_type="position",
                 gains=sim_utils.UrdfConverterCfg.JointDriveCfg.PDGainsCfg(
                     stiffness=kp,
                     damping=kd,
@@ -68,7 +71,7 @@ def get_wujihand_config(model_base_dir, hand_side):
         ),
         init_state=ArticulationCfg.InitialStateCfg(
             pos=(0.0, 0.0, 0.0),
-            rot=(0.0, 0.0, 0.0, 0.0), 
+            rot=(0.0, 0.0, 0.0, 0.0),
             joint_pos={".*": 0.0},
         ),
         actuators={

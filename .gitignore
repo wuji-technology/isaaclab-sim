@@ -12,3 +12,6 @@ modules/__pycache__/
 
 # MacOS
 .DS_Store
+
+# other
+usd
