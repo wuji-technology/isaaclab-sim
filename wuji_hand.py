@@ -4,9 +4,6 @@ from isaaclab.actuators.actuator_cfg import ImplicitActuatorCfg
 from isaaclab.assets.articulation import ArticulationCfg
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-os.environ["ROS_PACKAGE_PATH"] = f"{current_dir}:" + os.environ.get(
-    "ROS_PACKAGE_PATH", ""
-)
 
 
 def get_wujihand_config(model_base_dir, hand_side):

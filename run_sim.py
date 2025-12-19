@@ -32,7 +32,7 @@ def design_scene():
 
     # Create hand
     prim_utils.create_prim("/World/hand", "Xform")
-    hand_cfg = get_wujihand_config("wujihand-urdf/urdf/", HAND_SIDE).replace(
+    hand_cfg = get_wujihand_config("wuji_hand_description/urdf/", HAND_SIDE).replace(
         prim_path="/World/hand/WujiHand"
     )
     hand = Articulation(cfg=hand_cfg)

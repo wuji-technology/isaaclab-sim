@@ -1,3 +1,3 @@
-[submodule " wujihand-urdf"]
-	path = wujihand-urdf
-	url = https://github.com/Wuji-Technology-Co-Ltd/wujihand-urdf.git
+[submodule "wuji_hand_description"]
+	path = wuji_hand_description
+	url = https://github.com/Wuji-Technology-Co-Ltd/wuji_hand_description.git
