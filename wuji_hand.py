@@ -34,7 +34,7 @@ def get_wujihand_config(model_base_dir, hand_side):
             asset_path=urdf_path,
             usd_dir=usd_dir,
             usd_file_name="wujihand",
-            force_usd_conversion=True,
+            force_usd_conversion=False,
             # Physics properties
             fix_base=True,
             root_link_name="palm_link",
