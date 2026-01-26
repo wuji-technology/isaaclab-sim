@@ -179,7 +179,7 @@ jobs:
             }
 
             // 获取所有版本用于 Full Changelog 链接
-            const allVersions = [...changelog.matchAll(/## \[(\d+\.\d+\.\d+)\]/g)].map(m => m[1]);
+            const allVersions = [...changelog.matchAll(/## \[(\d+\.\d+\.\d+(?:-[a-zA-Z0-9.]+)?)\]/g)].map(m => m[1]);
 
             // 解析 [未发布]/[Unreleased] 部分
             const unreleasedMatch = changelog.match(/## \[(?:未发布|Unreleased)\]\n([\s\S]*?)(?=\n## \[|$)/);
@@ -190,7 +190,7 @@ jobs:
                 // 添加开发版本警告
                 if (body.includes('[!CAUTION]')) {
                   // 在现有 CAUTION 块末尾添加
-                  body = body.replace(/(\> \[!CAUTION\]\n(?:\> - .+\n)+)/, '$1> - **Note**: This is a development version, content may change at any time\n');
+                  body = body.replace(/(\> \[!CAUTION\]\n(?:\> - .+\n)*\> - .+)/, '$1\n> - **Note**: This is a development version, content may change at any time');
                 } else {
                   body += `\n\n> [!CAUTION]\n> - **Note**: This is a development version, content may change at any time\n`;
                 }
@@ -204,7 +204,7 @@ jobs:
             }
 
             // 解析最新正式版本
-            const versionRegex = /## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2})\n([\s\S]*?)(?=\n## \[|$)/;
+            const versionRegex = /## \[(\d+\.\d+\.\d+(?:-[a-zA-Z0-9.]+)?)\] - (\d{4}-\d{2}-\d{2})\n([\s\S]*?)(?=\n## \[|$)/;
             const versionMatch = changelog.match(versionRegex);
             if (versionMatch) {
               const [, version, date, rawContent] = versionMatch;
