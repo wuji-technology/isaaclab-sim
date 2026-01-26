@@ -1,6 +1,7 @@
 # isaaclab-sim
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/wuji-technology/isaaclab-sim)](https://github.com/wuji-technology/isaaclab-sim/releases)
 
 Simulation demo (IsaacSim): minimal demo for loading and controlling the Wuji Hand in IsaacSim simulator. The script loads the default right hand model and plays the trajectory in a loop. Supports both left and right hand configurations.
 
