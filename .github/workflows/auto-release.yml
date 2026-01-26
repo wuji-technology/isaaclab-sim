@@ -186,8 +186,11 @@ jobs:
               const content = parseContent(unreleasedMatch[1]);
               if (content) {
                 let body = content;
-                // 添加开发版本警告到 CAUTION
-                if (!body.includes('[!CAUTION]')) {
+                // 添加开发版本警告
+                if (body.includes('[!CAUTION]')) {
+                  // 在现有 CAUTION 块末尾添加
+                  body = body.replace(/(\> \[!CAUTION\]\n(?:\> - .+\n)+)/, '$1> - **Note**: This is a development version, content may change at any time\n');
+                } else {
                   body += `\n\n> [!CAUTION]\n> - **Note**: This is a development version, content may change at any time\n`;
                 }
                 // 添加 Full Changelog
