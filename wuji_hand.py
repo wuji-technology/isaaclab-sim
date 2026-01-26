@@ -13,20 +13,20 @@ def get_wujihand_config(model_base_dir, hand_side):
 
     # PD control gains
     kp = {
-        "finger(1|2|3|4|5)_joint(1|2)": 2,
-        "finger(1|2|3|4|5)_joint3": 1,
-        "finger(1|2|3|4|5)_joint4": 0.8,
+        f"{hand_side}_finger(1|2|3|4|5)_joint(1|2)": 2,
+        f"{hand_side}_finger(1|2|3|4|5)_joint3": 1,
+        f"{hand_side}_finger(1|2|3|4|5)_joint4": 0.8,
     }
     kd = {
-        "finger.*_joint(1|2)": 0.05,
-        "finger.*_joint(3|4)": 0.03,
+        f"{hand_side}_finger.*_joint(1|2)": 0.05,
+        f"{hand_side}_finger.*_joint(3|4)": 0.03,
     }
 
     # Torque limits for each joint (Nm)
     effort_limits = {
-        "finger(1|2|3|4|5)_joint(1|2)": 3,
-        "finger(1|2|3|4|5)_joint3": 1.5,
-        "finger(1|2|3|4|5)_joint4": 1,
+        f"{hand_side}_finger(1|2|3|4|5)_joint(1|2)": 3,
+        f"{hand_side}_finger(1|2|3|4|5)_joint3": 1.5,
+        f"{hand_side}_finger(1|2|3|4|5)_joint4": 1,
     }
 
     return ArticulationCfg(
@@ -37,7 +37,7 @@ def get_wujihand_config(model_base_dir, hand_side):
             force_usd_conversion=False,
             # Physics properties
             fix_base=True,
-            root_link_name="palm_link",
+            root_link_name=f"{hand_side}_palm_link",
             link_density=1,
             # Collision settings
             collider_type="convex_hull",
@@ -70,11 +70,15 @@ def get_wujihand_config(model_base_dir, hand_side):
         init_state=ArticulationCfg.InitialStateCfg(
             pos=(0.0, 0.0, 0.0),
             rot=(0.0, 0.0, 0.0, 0.0),
-            joint_pos={".*": 0.0},
+            joint_pos={
+                # joint1 has lower limit ~0.037, set slightly above
+                f"{hand_side}_finger.*_joint1": 0.04,
+                f"{hand_side}_finger.*_joint(2|3|4)": 0.0,
+            },
         ),
         actuators={
             "fingers": ImplicitActuatorCfg(
-                joint_names_expr=["finger.*_joint.*"],
+                joint_names_expr=[f"{hand_side}_finger.*_joint.*"],
                 effort_limit_sim=effort_limits,
                 stiffness=kp,
                 damping=kd,

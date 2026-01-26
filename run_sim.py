@@ -39,10 +39,10 @@ def design_scene():
 
     # Filter collisions between palm and finger link2
     stage = omni.usd.get_context().get_stage()
-    palm_prim = stage.GetPrimAtPath("/World/hand/WujiHand/palm_link")
+    palm_prim = stage.GetPrimAtPath(f"/World/hand/WujiHand/{HAND_SIDE}_palm_link")
     filtered_api = UsdPhysics.FilteredPairsAPI.Apply(palm_prim)
     for i in range(1, 6):
-        finger_prim = stage.GetPrimAtPath(f"/World/hand/WujiHand/finger{i}_link2")
+        finger_prim = stage.GetPrimAtPath(f"/World/hand/WujiHand/{HAND_SIDE}_finger{i}_link2")
         filtered_api.CreateFilteredPairsRel().AddTarget(finger_prim.GetPath())
 
     return hand
@@ -54,7 +54,7 @@ def run_simulator(sim, hand):
     count = 0
 
     trajectory = np.load(Path(__file__).parent / "data/wave.npy")
-    mujoco_joints = [f"finger{i}_joint{j}" for i in range(1, 6) for j in range(1, 5)]
+    mujoco_joints = [f"{HAND_SIDE}_finger{i}_joint{j}" for i in range(1, 6) for j in range(1, 5)]
 
     while simulation_app.is_running():
         if count % 500 == 0:
