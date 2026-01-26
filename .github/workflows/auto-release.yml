@@ -28,7 +28,8 @@ jobs:
               console.log('CHANGELOG.md not found, skipping release');
               return;
             }
-            const changelog = fs.readFileSync('CHANGELOG.md', 'utf8');
+            const changelog = fs.readFileSync('CHANGELOG.md', 'utf8')
+              .replace(/\r\n?/g, '\n');
 
             // 分类映射：CHANGELOG → Release 分类
             const categoryMap = {
