@@ -50,6 +50,7 @@ HAND_CFG = ArticulationCfg(
 
 
 def main():
+    """Set up scene with Wuji Hand and run trajectory tracking loop."""
     sim = sim_utils.SimulationContext(
         sim_utils.SimulationCfg(dt=1.0 / 100, device=args_cli.device)
     )
