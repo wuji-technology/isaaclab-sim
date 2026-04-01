@@ -1,21 +1,12 @@
 # isaaclab-sim
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/wuji-technology/isaaclab-sim)](https://github.com/wuji-technology/isaaclab-sim/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  [![Release](https://img.shields.io/github/v/release/wuji-technology/isaaclab-sim)](https://github.com/wuji-technology/isaaclab-sim/releases)
 
-Simulation demo (IsaacSim): minimal demo for loading and controlling the Wuji Hand in IsaacSim simulator. Loads pre-built USD assets with PBR materials and plays trajectory in a loop. Supports both left- and right-hand configurations via `--side` argument.
+Simulation demo for IsaacSim. This repository provides a minimal example for loading and controlling the Wuji Hand in IsaacSim simulator. Loads pre-built USD assets with PBR materials and plays trajectory in a loop, supporting both left- and right-hand configurations via `--side` argument.
 
-> For detailed usage guide, see [Wuji Hand Description Guide — Isaac Lab Simulation](https://docs.wuji.technology/docs/en/wuji-hand/latest/wuji-hand-description-guide/#332-isaac-lab-simulation).
+**Get started with [Quick Start](#quick-start). For detailed documentation, please refer to [Wuji Hand Description Guide — Isaac Lab Simulation](https://docs.wuji.tech/docs/en/wuji-hand/latest/wuji-hand-description-guide/#332-isaac-lab-simulation) on Wuji Docs Center.**
 
 https://github.com/user-attachments/assets/2f58ad84-7ed6-46fe-94c1-b4148068bec3
-
-## Table of Contents
-
-- [Repository Structure](#repository-structure)
-- [Usage](#usage)
-  - [Prerequisites](#prerequisites)
-  - [Running](#running)
-- [Contact](#contact)
 
 ## Repository Structure
 
@@ -28,15 +19,16 @@ https://github.com/user-attachments/assets/2f58ad84-7ed6-46fe-94c1-b4148068bec3
 └── README.md
 ```
 
-## Usage
+## Quick Start
 
-### Prerequisites
+### Installation
 
 ```bash
 git clone --recurse-submodules https://github.com/wuji-technology/isaaclab-sim.git
+cd isaaclab-sim
 ```
 
-Follow the [official documentation](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html) to set up your environment.
+Follow the [official documentation](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html) to set up your IsaacSim environment.
 
 ### Running
 
@@ -52,4 +44,4 @@ The script loads the pre-built USD model from the submodule and plays the trajec
 
 ## Contact
 
-For any questions, please contact support@wuji.tech.
+For any questions, please contact [support@wuji.tech](mailto:support@wuji.tech).
