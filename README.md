@@ -4,9 +4,9 @@
 
 Simulation demo for IsaacSim. This repository provides a minimal example for loading and controlling the Wuji Hand in IsaacSim simulator. Loads pre-built USD assets with PBR materials and plays trajectory in a loop, supporting both left- and right-hand configurations via `--side` argument.
 
-**Get started with [Quick Start](#quick-start). For detailed documentation, please refer to [Wuji Hand Description Guide — Isaac Lab Simulation](https://docs.wuji.tech/docs/en/wuji-hand/latest/wuji-hand-description-guide/#332-isaac-lab-simulation-example) on Wuji Docs Center.**
+**Get started with [Quick Start](#quick-start). For detailed documentation, please refer to [Isaac Lab Simulation Example](https://docs.wuji.tech/docs/en/wuji-description/latest/related-repos/#42-isaac-lab-simulation-example) on Wuji Docs Center.**
 
-https://github.com/user-attachments/assets/2f58ad84-7ed6-46fe-94c1-b4148068bec3
+https://github.com/user-attachments/assets/3fffb009-f78a-4dda-93ed-94de20b93811
 
 ## Repository Structure
 
